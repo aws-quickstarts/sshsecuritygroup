@@ -1,0 +1,9 @@
+{
+    "Parameters": {
+        "SecurityGroupName": "SSH",
+        "VpcId": "vpc-02c198e07616d841c",
+        "DefaultPortSSH": "22",
+        "IpIngress1": "",
+        "Owner": "tg"
+    }
+}

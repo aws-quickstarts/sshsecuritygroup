@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: Cria um security group para conexão SSH em instâncias EC2
+
+Parameters:
+
+  SecurityGroupName:
+    Type: String
+    Default: SSH
+
+  VpcId:
+    Type: String
+    Default: vpc-02c198e07616d841c
+  
+  DefaultPortSSH:
+    Type: String
+    Default: 22
+  
+  IpIngress1:
+    Type: String
+    Default: 189.59.139.230/32
+  
+  Owner:
+    Type: String
+    Default: tg
+
+Resources:
+
+  SSHSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub Sg${SecurityGroupName}
+      GroupDescription: !Sub Sg${SecurityGroupName}
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: !Ref DefaultPortSSH
+          ToPort: !Ref DefaultPortSSH
+          CidrIp: !Ref IpIngress1
+      Tags:
+        - Key: Owner
+          Value: !Ref Owner
+
+Outputs:
+
+  SgSSH:
+    Value: !GetAtt SSHSecurityGroup.GroupId
+    Export:
+      Name: !Sub Sg${SecurityGroupName}GroupId
