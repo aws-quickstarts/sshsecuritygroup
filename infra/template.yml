@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 
-Description: Cria um security group para conexão SSH em instâncias EC2
+Description: Creates a Security Group to allow SSH conection;
 
 Parameters:
 
@@ -10,7 +10,6 @@ Parameters:
 
   VpcId:
     Type: String
-    Default: vpc-02c198e07616d841c
   
   DefaultPortSSH:
     Type: String
@@ -18,7 +17,6 @@ Parameters:
   
   IpIngress1:
     Type: String
-    Default: 189.59.139.230/32
   
   Owner:
     Type: String
